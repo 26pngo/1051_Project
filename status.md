@@ -2,7 +2,7 @@
 
 #### Your name
 
-TODO
+Philip Ngo
 
 #### Your section leader's name
 
