@@ -1,7 +1,8 @@
 from tkinter import *
+from cell import Cell
 import settings
 import utils
-from cell import Cell
+
 
 root = Tk()
 root.configure(bg="black")
@@ -17,23 +18,35 @@ top_frame = Frame(
 )
 top_frame.place(x=0, y=0)
 
+game_title = Label(
+    top_frame,
+    bg='black',
+    fg='white',
+    text='Philip Ngo 2023: Minesweeper',
+    font=('', 48)
+)
+
+game_title.place(
+    x=utils.width_percentage(25), y=0
+)
+
 left_frame = Frame(
     root,
     bg='black',
     width=utils.width_percentage(25),
     height=utils.height_percentage(75)
 )
-left_frame.place(x=0, y=180)
+left_frame.place(x=0, y=utils.height_percentage(25))
 
 center_frame = Frame(
     root,
     bg='black',
     width=utils.width_percentage(75),
-    height=utils.height_percentage(75),
+    height=utils.height_percentage(75)
 )
 center_frame.place(
     x=utils.width_percentage(25),
-    y=utils.height_percentage(25)
+    y=utils.height_percentage(25),
 )
 
 for x in range(settings.Grid_Size):
@@ -44,6 +57,10 @@ for x in range(settings.Grid_Size):
             column=x, row=y
         )
 
+Cell.create_cell_count_label(left_frame)
+Cell.cell_count_label_object.place(
+    x=0, y=0
+)
 Cell.randomize_mines()
 
 root.mainloop()
